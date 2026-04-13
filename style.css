@@ -114,6 +114,13 @@ body {
     margin-bottom: 12px;
 }
 
+.ingredient-add{
+    align-items: center;
+    padding: 10px;
+    background: var(--light);
+    border-radius: var(--radius-sm);
+}
+
 .ingredient-row {
     display: flex;
     gap: 6px;

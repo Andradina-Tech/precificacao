@@ -92,19 +92,24 @@ function renderIngredients() {
     ).join('');
 
     list.innerHTML = currentIngredients.map(ing => `
-        <div class="ingredient-row" data-id="${ing.id}">
+        <div class="ingredient-add" data-id="${ing.id}">
+            <p>Ingrediente</p>
             <input type="text" placeholder="Nome" value="${ing.name}" 
                 onchange="updateIngredient(${ing.id}, 'name', this.value)">
+            <p>Quantidade</p>
             <input type="number" placeholder="Qtd" value="${ing.quantityUsed}" step="0.01" min="0"
                 onchange="updateIngredient(${ing.id}, 'quantityUsed', parseFloat(this.value))">
             <select onchange="updateIngredient(${ing.id}, 'unitUsed', this.value)">
                 ${unitOptions.replace(`value="${ing.unitUsed}"`, `value="${ing.unitUsed}" selected`)}
             </select>
+            <br>
+            <p>Qtd no pacote</p>
             <input type="number" placeholder="Compro" value="${ing.quantityBought}" step="0.01" min="0"
                 onchange="updateIngredient(${ing.id}, 'quantityBought', parseFloat(this.value))">
             <select onchange="updateIngredient(${ing.id}, 'unitBought', this.value)">
                 ${unitOptions.replace(`value="${ing.unitBought}"`, `value="${ing.unitBought}" selected`)}
             </select>
+            <p>Preço do pacote</p>
             <input type="number" placeholder="R$" value="${ing.price}" step="0.01" min="0"
                 onchange="updateIngredient(${ing.id}, 'price', parseFloat(this.value))">
             <button type="button" class="btn-remove" onclick="removeIngredient(${ing.id})">×</button>
