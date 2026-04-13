@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#3498db">
+    <meta name="description" content="App para calcular custo de produtos">
+    <title>Calculadora de Custo</title>
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="icon-192.png">
+</head>
+<body>
+    <div class="app">
+        <header class="header">
+            <h1>Calculadora de Custo</h1>
+            <p>Calcule o custo dos seus produtos</p>
+        </header>
+
+        <main class="main">
+            <section class="product-form">
+                <h2>Novo Produto</h2>
+                <div class="form-group">
+                    <label for="productName">Nome do Produto</label>
+                    <input type="text" id="productName" placeholder="Ex: Bolo de chocolate">
+                </div>
+
+                <div class="ingredients-section">
+                    <h3>Ingredientes</h3>
+                    <div class="ingredients-header">
+                        <span>Ingrediente</span>
+                        <span>Qtd Uso</span>
+                        <span>Un</span>
+                        <span>Preço</span>
+                    </div>
+                    <div id="ingredientsList" class="ingredients-list"></div>
+                    <button type="button" id="addIngredientBtn" class="btn btn-outline">+ Adicionar Ingrediente</button>
+                </div>
+
+                <div class="total-section">
+                    <div class="total-row">
+                        <span>Custo Total:</span>
+                        <span id="totalCost">R$ 0,00</span>
+                    </div>
+                    <div class="profit-section">
+                        <label for="profitMargin">Margem de Lucro (%):</label>
+                        <input type="number" id="profitMargin" value="30" min="0" step="1">
+                    </div>
+                    <div class="total-row">
+                        <span>Preço de Venda Sugerido:</span>
+                        <span id="suggestedPrice">R$ 0,00</span>
+                    </div>
+                </div>
+
+                <button type="submit" id="saveProductBtn" class="btn btn-primary">Salvar Produto</button>
+            </section>
+
+            <section class="products-list">
+                <h2>Produtos Salvos</h2>
+                <div id="savedProducts" class="saved-products"></div>
+            </section>
+        </main>
+
+        <nav class="bottom-nav">
+            <button class="nav-btn active" data-tab="calculator">Calculadora</button>
+            <button class="nav-btn" data-tab="products">Meus Produtos</button>
+        </nav>
+    </div>
+
+    <!-- Modal para editar/excluir -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <h3 id="modalTitle">Detalhes do Produto</h3>
+            <div id="modalBody"></div>
+            <div class="modal-actions">
+                <button id="closeModal" class="btn btn-outline">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(reg => console.log('Service Worker registrado'))
+                .catch(err => console.log('Erro no Service Worker:', err));
+        }
+    </script>
+</body>
+</html>

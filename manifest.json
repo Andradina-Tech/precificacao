@@ -1,0 +1,17 @@
+{
+  "name": "Calculadora de Custo",
+  "short_name": "Custo Prod",
+  "description": "App para calcular o custo de produtos",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f8f9fa",
+  "theme_color": "#3498db",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml"
+    }
+  ]
+}
