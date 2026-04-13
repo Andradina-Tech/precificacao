@@ -471,3 +471,45 @@ window.closeModal = closeModal;
 window.printProduct = printProduct;
 
 document.addEventListener('DOMContentLoaded', init);
+
+// --- PWA INSTALL PROMPT LOGIC ---
+let deferredPrompt;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Previne o mini-infobar padrão do Chrome
+    e.preventDefault();
+    // Salva o evento para disparar mais tarde
+    deferredPrompt = e;
+    // Exibe a nossa interface customizada
+    const installPrompt = document.getElementById('installPrompt');
+    if (installPrompt) {
+        installPrompt.style.display = 'block';
+    }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const installBtn = document.getElementById('installBtn');
+    const closeInstallBtn = document.getElementById('closeInstallBtn');
+    const installPrompt = document.getElementById('installPrompt');
+
+    if (installBtn) {
+        installBtn.addEventListener('click', async () => {
+            // Esconde o painel customizado
+            installPrompt.style.display = 'none';
+            // Dispara o prompt de instalação
+            if (deferredPrompt) {
+                deferredPrompt.prompt();
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log(`User response to the install prompt: ${outcome}`);
+                // Limpa o evento, pois só pode ser usado uma vez
+                deferredPrompt = null;
+            }
+        });
+    }
+
+    if (closeInstallBtn) {
+        closeInstallBtn.addEventListener('click', () => {
+            installPrompt.style.display = 'none';
+        });
+    }
+});

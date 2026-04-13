@@ -430,6 +430,30 @@ body {
     margin-bottom: 8px;
 }
 
+/* PWA Install Prompt */
+.install-prompt {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    right: 20px;
+    background: var(--white);
+    padding: 18px;
+    border-radius: var(--radius);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+    z-index: 1000;
+}
+.install-prompt-content p {
+    margin-bottom: 15px;
+    font-weight: 500;
+    color: var(--secondary);
+    text-align: center;
+    font-size: 1.05rem;
+}
+.install-actions {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 480px) {
     .header {
         padding: 20px 16px;

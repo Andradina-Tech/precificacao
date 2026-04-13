@@ -1,10 +1,15 @@
-const CACHE_NAME = 'calculadora-custo-v1';
+const CACHE_NAME = 'calculadora-custo-v2';
 const urlsToCache = [
   '/',
   '/index.html',
+  '/product-calculator.html',
+  '/product-calculator.js',
   '/style.css',
   '/script.js',
-  '/manifest.json'
+  '/manifest.json',
+  '/icon-192.png',
+  '/icon-512.png',
+  '/icon.svg'
 ];
 
 self.addEventListener('install', event => {

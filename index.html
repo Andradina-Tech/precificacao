@@ -67,6 +67,17 @@
             <button class="nav-btn active" data-tab="calculator">Calculadora</button>
             <button class="nav-btn" data-tab="products">Meus Produtos</button>
         </nav>
+        
+        <!-- PWA Install Prompt -->
+        <div id="installPrompt" class="install-prompt" style="display: none;">
+            <div class="install-prompt-content">
+                <p>Instale o nosso App para usar offline direto na sua tela inicial!</p>
+                <div class="install-actions">
+                    <button id="installBtn" class="btn btn-primary">Instalar Agora</button>
+                    <button id="closeInstallBtn" class="btn btn-outline" style="margin-top: 10px;">Depois</button>
+                </div>
+            </div>
+        </div>
     </div>
 
     <!-- Modal para editar/excluir -->
